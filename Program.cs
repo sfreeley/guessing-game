@@ -20,9 +20,11 @@ namespace guessing_game
                 if (int.Parse(response) == secretNum)
                 {
                     Console.WriteLine("You guessed it!");
+                    return;
                 }
                 else
                 {
+                    Console.Write($"Your guess {int.Parse(response)}");
                     Console.WriteLine("Sorry, try again...");
                 }
             }
