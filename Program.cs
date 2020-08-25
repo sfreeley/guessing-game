@@ -6,14 +6,28 @@ namespace guessing_game
     {
         static void Main(string[] args)
         {
-            DisplayMessage();
+
+            SecretNumber();
         }
 
-        static void DisplayMessage()
+        static void SecretNumber()
         {
-            Console.Write("Guess a number. ");
-            string response = Console.ReadLine();
-            Console.WriteLine(response);
+            int secretNum = 42;
+            for (int i = 0; i < 4; i++)
+            {
+                Console.Write("Guess a number.");
+                string response = Console.ReadLine();
+                if (int.Parse(response) == secretNum)
+                {
+                    Console.WriteLine("You guessed it!");
+                }
+                else
+                {
+                    Console.WriteLine("Sorry, try again...");
+                }
+            }
+
         }
+
     }
 }
