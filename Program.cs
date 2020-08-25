@@ -5,7 +5,7 @@ namespace guessing_game
     class Program
     {
         static int secretNum = new Random().Next(0, 101);
-        static int guessesLeft;
+
         static void Main(string[] args)
         {
             SecretNumber();
@@ -22,32 +22,32 @@ namespace guessing_game
                 Console.WriteLine("What do you want your difficulty level to be? Easy? 8 guesses; Medium? 6 guesses; Hard? 4 guesses; CHEATER? Unlimited guesses.");
                 difficultyResponse = Console.ReadLine().ToLower();
             }
+
             if (difficultyResponse == "easy")
             {
-                guessesLeft = 8;
-                NumberOfGuesses(guessesLeft);
+                NumberOfGuesses(8);
             }
             else if (difficultyResponse == "medium")
             {
-                guessesLeft = 6;
-                NumberOfGuesses(guessesLeft);
+
+                NumberOfGuesses(6);
             }
             else if (difficultyResponse == "hard")
             {
-                guessesLeft = 4;
-                NumberOfGuesses(guessesLeft);
+
+                NumberOfGuesses(4);
             }
             else if (difficultyResponse == "cheater")
             {
-                guessesLeft = int.MaxValue;
-                NumberOfGuesses(guessesLeft);
+                NumberOfGuesses(1);
             }
 
         }
 
-        static void NumberOfGuesses(int NumOfGuesses)
+        static void NumberOfGuesses(int guesses)
         {
-            for (int i = 0; i < NumOfGuesses; i++)
+            int remainingGuesses = guesses - 1;
+            for (int i = 0; i < guesses; i++)
             {
                 Console.Write("Guess a number.");
                 string response = Console.ReadLine();
@@ -59,13 +59,11 @@ namespace guessing_game
                 }
                 else if (int.Parse(response) > secretNum)
                 {
-                    NumOfGuesses--;
-                    Console.WriteLine($"Your guess { int.Parse(response) } was too high.Try again...You have { NumOfGuesses } guesses left. ");
+                    Console.WriteLine($"Your guess { int.Parse(response) } was too high.Try again...You have {remainingGuesses--} guesses left. ");
                 }
                 else
                 {
-                    NumOfGuesses--;
-                    Console.WriteLine($"Your guess { int.Parse(response) } was too low.Try again...You have { NumOfGuesses } guesses left.");
+                    Console.WriteLine($"Your guess { int.Parse(response) } was too low.Try again...You have { remainingGuesses--} guesses left.");
                 }
             }
         }
