@@ -39,7 +39,7 @@ namespace guessing_game
             }
             else if (difficultyResponse == "cheater")
             {
-                NumberOfGuesses(1);
+                NumberOfGuesses(int.MaxValue);
             }
 
         }
