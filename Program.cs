@@ -47,10 +47,12 @@ namespace guessing_game
         static void NumberOfGuesses(int guesses)
         {
             int remainingGuesses = guesses - 1;
+            int whatGuess = 0;
             for (int i = 0; i < guesses; i++)
             {
-                Console.Write("Guess a number.");
+                Console.Write("Guess a number between 1 and 100. ");
                 string response = Console.ReadLine();
+                whatGuess++;
 
                 if (int.Parse(response) == secretNum)
                 {
@@ -59,11 +61,19 @@ namespace guessing_game
                 }
                 else if (int.Parse(response) > secretNum)
                 {
-                    Console.WriteLine($"Your guess { int.Parse(response) } was too high.Try again...You have {remainingGuesses--} guesses left. ");
+                    Console.WriteLine($"Your guess { int.Parse(response) } was too high. This is guess number {whatGuess} . You have {remainingGuesses--} guesses left.");
+                    if (whatGuess != guesses)
+                    {
+                        Console.WriteLine("Try Again!");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine($"Your guess { int.Parse(response) } was too low.Try again...You have { remainingGuesses--} guesses left.");
+                    Console.WriteLine($"Your guess { int.Parse(response) } was too low. This is guess number {whatGuess}. You have { remainingGuesses--} guesses left.");
+                    if (whatGuess != guesses)
+                    {
+                        Console.WriteLine("Try Again!");
+                    }
                 }
             }
         }
