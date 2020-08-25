@@ -12,18 +12,24 @@ namespace guessing_game
 
         static void SecretNumber()
         {
-            int secretNum = 42;
+            int secretNum = new Random().Next(0, 101);
+            int guessesLeft = 4;
+            Console.WriteLine(secretNum);
             for (int i = 0; i < 4; i++)
             {
+
                 Console.Write("Guess a number.");
                 string response = Console.ReadLine();
+
                 if (int.Parse(response) == secretNum)
                 {
-                    Console.WriteLine("You guessed it!");
+                    Console.WriteLine($"You guessed it, {int.Parse(response)}!");
+                    return;
                 }
                 else
                 {
-                    Console.WriteLine("Sorry, try again...");
+                    guessesLeft--;
+                    Console.WriteLine($"Your guess {int.Parse(response)} was wrong. Sorry, try again... You have {guessesLeft} guesses left. ");
                 }
             }
 
