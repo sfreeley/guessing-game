@@ -26,10 +26,15 @@ namespace guessing_game
                     Console.WriteLine($"You guessed it, {int.Parse(response)}!");
                     return;
                 }
+                else if (int.Parse(response) > secretNum)
+                {
+                    guessesLeft--;
+                    Console.WriteLine($"Your guess {int.Parse(response)} was too high. Try again... You have {guessesLeft} guesses left.");
+                }
                 else
                 {
                     guessesLeft--;
-                    Console.WriteLine($"Your guess {int.Parse(response)} was wrong. Sorry, try again... You have {guessesLeft} guesses left. ");
+                    Console.WriteLine($"Your guess {int.Parse(response)} was too low. Try again... You have {guessesLeft} guesses left.");
                 }
             }
 
